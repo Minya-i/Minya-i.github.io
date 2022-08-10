@@ -1,0 +1,1648 @@
+# 接口
+
+## post请求参数配置
+
+```js
+// 这个是post请求的参数配置
+export const post = (url, data, options = {}) => {
+  return service.post(url, data, options)
+}
+```
+
+接口编写
+
+* params是传参到路由上的
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220105164043270.png" alt="image-20220105164043270" style="zoom: 67%;" />
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220105161937046.png" alt="image-20220105161937046" style="zoom:67%;" />
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220105161810683.png" alt="image-20220105161810683" style="zoom: 50%;" />
+
+使用接口
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220105162206974.png" alt="image-20220105162206974" style="zoom:50%;" />
+
+
+
+
+
+
+
+# git
+
+想拉取一个分支的代码，但是你自己的分支又有更新。
+
+解决办法：先提交你自己的代码
+
+* 在huangfh分支
+
+```
+git add . 
+git commit -m "XXX"
+```
+
+然后再
+
+```
+git merge dev
+```
+
+最后再拉取即可
+
+```git
+git pull origin dev
+```
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220110113509556.png" alt="image-20220110113509556" style="zoom: 80%;" />
+
+
+
+
+
+* git 放弃本地修改，强制拉取更新
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220217092846295.png" alt="image-20220217092846295" style="zoom:67%;" />
+
+```git
+1、将所有代码添加到暂存区
+   git add . 
+
+2、然后将代码临时保存
+   git stash
+
+3、此时代码会重置到修改前的状态，可以同步远程仓库区
+   git pull
+
+4、同步后，如果还想继续修改原来的代码，可以将临时代码恢复至工作区
+   git stash pop
+```
+
+
+
+
+
+## git冲突解决
+
+| 选项                   | 含义                       |
+| :--------------------- | :------------------------- |
+| Accept Current Change  | 接受当前分支1的修改        |
+| Accept Incoming Change | 接受pull导入主分支的修改   |
+| Accept Both Change     | 同时接受两个分支的修改     |
+| Compare Changes        | 对比修改，主要用于手动修改 |
+
+![image-20220319091541055](https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220319091541055.png)
+
+
+
+
+
+## git遇到的问题
+
+* 问题描述：在git bash中键入 $ git push origin master 进行提交的时候出现 如下错误：
+
+```
+error: failed to push some refs to 'https://github.com/bluetata/
+```
+
+![image-20220323135853923](https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220323135853923.png)
+
+
+
+**问题原因**：远程库与本地库不一致造成的，在hint中也有提示把远程库同步到本地库就可以了。
+
+**解决办法**：使用命令行：
+
+
+
+该命令的意思是把远程库中的更新合并到（pull=fetch+merge）本地库中，–-rebase的作用是取消掉本地库中刚刚的commit，并把他们接到更新后的版本库之中。出现如下图执行pull执行成功后，可以成功执行git push origin master操作。
+
+
+
+图形描述问题发生的原因及解决办法：
+
+1、发生问题时候的状态：
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220323140601532.png" alt="image-20220323140601532" style="zoom: 80%;" />
+
+
+
+2、执行 git pull -–rebase origin master 操作，意为先取消commit记录，并且把它们**临时**保存为补丁(patch)(这些补丁放到”.git/rebase”目录中)，之后同步远程库到本地，最后合并补丁到本地库之中。
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220323152635663.png" alt="image-20220323152635663" style="zoom:80%;" />
+
+
+
+3、最后把本地库push到远程库当中，使本地与远程仓库保持一致。
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220323152708651.png" alt="image-20220323152708651" style="zoom:80%;" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# tinyMCE
+
+[在 Vue 项目中引入 tinymce 富文本编辑器](https://www.cnblogs.com/wisewrong/p/8985471.html)
+
+* 在node_modules里找到tinymce，把里面的这三个东西复制到项目的public中的tinymce里
+
+![image-20220119164740745](https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220119164740745.png)
+
+
+
+
+
+# 前端权限控制
+
+## 菜单权限
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220219103605775.png" alt="image-20220219103605775" style="zoom: 67%;" />
+
+
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220219103740981.png" alt="image-20220219103740981" style="zoom:50%;" />
+
+
+
+展示role
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220303111347160.png" alt="image-20220303111347160" style="zoom: 67%;" />
+
+
+
+## 按钮权限
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220303111638461.png" alt="image-20220303111638461" style="zoom: 80%;" />
+
+
+
+
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220303111838524.png" alt="image-20220303111838524" style="zoom: 67%;" />
+
+
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220303112000081.png" alt="image-20220303112000081" style="zoom:67%;" />
+
+
+
+* 自定义指令
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220303112023412.png" alt="image-20220303112023412" style="zoom: 67%;" />
+
+
+
+* 在路由上配置权限
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220303112209834.png" alt="image-20220303112209834" style="zoom:67%;" />
+
+
+
+* 在页面上配置按钮权限
+
+![image-20220303112629179](https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220303112629179.png)
+
+
+
+下面这个是一开始的实现思路及方法(没用的):
+
+![image-20220303112825639](https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220303112825639.png)
+
+
+
+* 通过自定义指令配置首页组件权限
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220303112428583.png" alt="image-20220303112428583" style="zoom:67%;" />
+
+
+
+# 前端工作中遇到的技巧
+
+## Object.freeze()
+
+> 经过 Object.freeze() 方法的对象无法进行更新响应
+>
+> Object.freeze() 方法用于冻结对象，禁止对于该对象的属性进行修改（由于`数组本质也是对象`，因此该方法可以对数组使用）
+
+注意：
+
+1. Object.freeze() 和 const 变量声明不同,也不承担 const 的功能
+
+2. const的行为像 let。它们唯一的区别是， const定义了一个无法重新分配的变量。 通过 const声明的变量是具有块级作用域的，而不是像 var声明的变量具有函数作用域。
+
+3. Object.freeze()接受一个对象作为参数，并返回一个相同的不可变的对象。这就意味着我们不能添加，删除或更改对象的任何属性。
+
+4. const和Object.freeze()并不同，const是防止变量重新分配，而Object.freeze()是使对象具有不可变性。
+
+   
+
+在工作中使用：
+
+* 在utils封装
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20211231110034081.png" alt="image-20211231110034081" style="zoom:67%;" />
+
+*  在Vue中使用：
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20211231110255630.png" alt="image-20211231110255630" style="zoom:67%;" />
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20211231110229253.png" alt="image-20211231110229253" style="zoom:67%;" />
+
+
+
+
+
+## 测试数据
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220103104851864.png" alt="image-20220103104851864" style="zoom:67%;" />
+
+
+
+
+
+
+
+## Vue-Cli中的多环境配置
+
+[vue多环境配置](https://blog.csdn.net/weixin_46136664/article/details/108142235)
+
+[Vue-Cli官网的模式和环境变量]([模式和环境变量 | Vue CLI (vuejs.org)](https://cli.vuejs.org/zh/guide/mode-and-env.html#模式))
+
+根目录中的下列文件来指定环境变量：
+
+```js
+.env                # 在所有的环境中被载入
+.env.local          # 在所有的环境中被载入，但会被 git 忽略
+.env.[mode]         # 只在指定的模式中被载入
+.env.[mode].local   # 只在指定的模式中被载入，但会被 git 忽略
+```
+
+关于文件名：
+
+* 必须以如下方式命名，不要乱起名，也无需专门手动控制加载哪个文件
+
+1. .env 全局默认配置文件，不论什么环境都会加载合并
+2. .env.development 开发环境下的配置文件
+3. .env.production 生产环境下的配置文件
+
+![img](https://img-blog.csdnimg.cn/20190705104526315.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3c0MDU3MjI5MDc=,size_16,color_FFFFFF,t_70)
+
+
+
+关于文件内容：
+
+注意：属性名必须以VUE_APP_开头，比如VUE_APP_XXX
+
+.env：![img](https://img-blog.csdnimg.cn/20190705105850614.png)
+
+
+
+.env.development：![img](https://img-blog.csdnimg.cn/20190705105825851.png)
+
+
+
+
+
+关于文件的加载：
+
+根据启动命令vue会自动加载对应的环境，vue是根据文件名进行加载的，所以上面说“不要乱起名，也无需专门控制加载哪个文件”
+
+比如执行npm run serve命令，会自动加载.env.development文件
+
+
+
+### 使用如下
+
+* 在package.json新增命令脚本
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220104164038398.png" alt="image-20220104164038398" style="zoom: 50%;" />
+
+在项目根目录下，新增配置文件
+--mode tsj意思为指定环境模式为tsj,会调用.env.tsj文件。
+
+vue-cli-service dev命令默认不指定则为 development。
+
+所以我们建立多个配置文件
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220104164245017.png" alt="image-20220104164245017" style="zoom: 67%;" />
+
+比如.env.tsj，内容大致如下
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220104164438728.png" alt="image-20220104164438728" style="zoom:67%;" />
+
+这个就是.env.tsj就是你需要访问的后端环境
+
+运行项目：npm run dev:tsj
+
+
+
+
+
+## 循环多个按钮
+
+![image-20220108165414489](https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220108165414489.png)
+
+![image-20220108165414489](C:\Users\hongsuan\AppData\Roaming\Typora\typora-user-images\image-20220108165414489.png)
+
+
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220108165458462.png" alt="image-20220108165458462" style="zoom:67%;" />
+
+
+
+在data里：
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220108165525410.png" alt="image-20220108165525410" style="zoom:67%;" />
+
+
+
+## vue跳转页面并传递参数
+
+栗子: 
+
+1、首先创建readDetail.vue 且在index.js中注册路由。
+
+### 传递页面方式
+
+#### 1、通过router-link进行跳转
+
+```vue
+<router-link   
+    :to="{  
+        path: 'yourPath',     
+        params: {   
+            key: 'value', // orderNum : this.searchData.orderNo
+        },  
+        query: {  
+           key: 'value', // orderNum : this.searchData.orderNo
+        }  
+    }">  
+    <button type="button">跳转</button> </router-link> 
+
+```
+
+>  1. path -> 是要跳转的路由路径,也可以是路由文件里面配置的 name 值,两者都可以进行路由导航  
+>  2. params -> 是要传送的参数,参数可以直接key:value形式传递  
+>  3. query -> 是通过 url 来传递参数的同样是key:value形式传递
+
+
+
+##### 1.1 接收方式
+
+> this.$route.params.参数名
+>
+> this.$route.query.参数名
+
+```vue
+<router-link :to="{ name: 'readDetail', params: { msgKeyOne: 'jump test.' }}">
+     <button type="button">跳转</button>
+</router-link>
+<button @click="sendParams">传递</button>
+
+export default {
+    name: 'reads',
+    data () {
+      return {
+        msg: 'msg test.'
+      }
+    },
+}
+```
+
+
+
+
+
+#### 2、$router方式跳转
+
+* this.$router.push({name:'路由命名',params:{参数名:参数值,参数名:参数值}})
+
+  ```js
+  this.$router.push({  
+              path: 'yourPath',   
+              name: '要跳转的路径的 name,在 router 文件夹下的 index.js 文件内找',  
+              params: {   
+                  key: 'key',   
+                  msgKey: this.msg  
+              }  
+              /*query: {  
+                  key: 'key',   
+                  msgKey: this.msg  
+              }*/  
+          })
+  
+  ```
+
+
+
+
+##### 2.1 接收方式
+
+```js
+<div class="container">
+    <p style="color:red;">Num：{{ myIndex }}</p>
+    <p>{{ msg }}</p>
+</div>
+
+data () {
+      return {
+        msg: '',
+        // 保存传递过来的index
+        myIndex: ''
+      }
+
+mounted: function () {
+      this.msg = this.$route.params.msgKeyOne
+      this.myIndex = this.$route.params.msgKey
+      console.log(this.myIndex)
+    }
+```
+
+
+
+例子: 
+
+* 这是hello.vue组件，通过$router传值
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220302141711831.png" alt="image-20220302141711831" style="zoom: 67%;" />
+
+
+
+* 这是world.vue组件，通过`this.$route.params`的方法获取值
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220302142055262.png" alt="image-20220302142055262" style="zoom:67%;" />
+
+
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220407150038925.png" alt="image-20220407150038925" style="zoom:80%;" />
+
+
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220407150053298.png" alt="image-20220407150053298" style="zoom:80%;" />
+
+
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220407150321039.png" alt="image-20220407150321039" style="zoom:80%;" />
+
+
+
+
+
+## 兄弟组件传值
+
+1、
+
+### 使用常规的子传父，父再传子的方式
+
+
+
+2、
+
+### bus总线传值
+
+>  创建一个Vue实例eventBus作为媒介。
+>
+>  在相互通信的兄弟组件中都引入eventBus，让各兄弟组件共用一个事件机制。
+>
+>  通过eventBus.$emit(事件名，参数)传递数据，
+>
+>  eventBus.$on(事件名，参数=> {})接收数据
+
+* 在项目中创建一个单独的utils/index.js文件(可以全局引入，也可以在组件里单独引入)
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220216102841479.png" alt="image-20220216102841479" style="zoom:67%;" />
+
+
+
+
+
+* 在父组件里注册并使用子组件
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220216103025214.png" alt="image-20220216103025214" style="zoom:67%;" />
+
+
+
+* 分别在子组件basicInfo和permission中引入utils/index.js里
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220216103224578.png" alt="image-20220216103224578" style="zoom:67%;" />
+
+
+
+* basicInfo组件向permission组件传值：(传值使用$emit)
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220216103350621.png" alt="image-20220216103350621" style="zoom:67%;" />
+
+
+
+* permission组件接收到basicInfo组件的值：(接收值使用$on)
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220216103519792.png" alt="image-20220216103519792" style="zoom:67%;" />
+
+
+
+<img src="C:\Users\hongsuan\AppData\Roaming\Typora\typora-user-images\image-20220216105103364.png" alt="image-20220216105103364" style="zoom: 50%;" />
+
+
+
+
+
+## props传值
+
+[props传值学习](https://www.cnblogs.com/chz1905/p/10937988.html)
+
+### 	props 两种传值
+
+​	**1、父组件向子组件传值（属性传值）**
+
+​	**2、子组件向父组件传值（事件传值）**
+
+
+
+#### props属性传值
+
+1、传具体的值 string(字符串) number(数值) boolean(布尔)
+
+2、传一个引用 array(数组) object(对象)
+
+
+
+**属性传值 —— 父（组件）传子（组件）**
+
+父组件：
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220110140333596.png" alt="image-20220110140333596" style="zoom:67%;" />
+
+在data里定义了一个`id`值
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220110140952899.png" alt="image-20220110140952899" style="zoom:67%;" />
+
+然后从接口获取数据过来，然后把接口数据中的给项`id`通过`this.tableConfig.id`接收
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220110140913393.png" alt="image-20220110140913393" style="zoom: 67%;" />
+
+
+
+
+
+子组件：
+
+然后在子组件里定义`props`，`props`里定义接收参数的类型和是否必须
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220110140531241.png" alt="image-20220110140531241" style="zoom:67%;" />
+
+接收完值，在子组件里使用即可
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220110141429832.png" alt="image-20220110141429832" style="zoom:67%;" />
+
+
+
+
+
+#### props事件传值
+
+**事件传值 —— 子传父 $emit**
+
+$emit("自己定义的事件名","传的内容")
+
+通过$emit("change","这是子传父的值")注册事件 change为事件名称 后面的为传的内容
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220110172202988.png" alt="image-20220110172202988" style="zoom:80%;" />
+
+触发$emit事件后，会在父组件中查找 对应的 change 事件
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220110172134658.png" alt="image-20220110172134658" style="zoom:80%;" />
+
+
+
+<img src="C:\Users\hongsuan\AppData\Roaming\Typora\typora-user-images\image-20220301165601016.png" alt="image-20220301165601016" style="zoom: 67%;" />
+
+
+
+
+
+
+
+## Vue知识
+
+
+
+### 获取详情信息
+
+* Vue里的异步请求不能在生命周期created和mounted里解析到的
+
+场景：你有一个列表，现在想点击列表里的一条数据，然后获取这一条数据的详情
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220111134337989.png" alt="image-20220111134337989" style="zoom: 80%;" />
+
+
+
+* 首先，你要在点击详情列表跳转到同时，向路由传递一个唯一的id
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220111134627228.png" alt="image-20220111134627228" style="zoom:80%;" />
+
+![image-20220111134719945](https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220111134719945.png)
+
+
+
+* 跳转到了详情页面时，接收到一个唯一id
+* 然后把id通过接口获取指定id的详情信息数据
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220111135354727.png" alt="image-20220111135354727" style="zoom: 67%;" />
+
+
+
+* 然后把拿到的数据通过props传到子组件
+* 子组件：
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220111140303602.png" alt="image-20220111140303602" style="zoom: 67%;" />
+
+* 最后就可以获取到详情数据，渲染即可
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-2022140702897.png" alt="image-2022140702897" style="zoom:67%;" />
+
+
+
+
+
+* 注意：如果你是封装了一个组件，然后详情页面去调用这个组件，使用接口是异步操作，不能使用生命周期里的`created`和`mounted`来测试数据是否拿到
+
+
+
+
+
+### Vue路由传递获取参数
+
+通过Vue传递参数可以分为两种方式
+
+* `params参数`
+* `query参数`
+
+
+
+#### params参数
+
+params参数传递方式分为两种：
+
+* 路由配置参数
+* 使用`$router`的`push`编程式添加
+
+
+
+##### 路由配置参数
+
+在路由中配置如下：
+
+```js
+{
+   path: '/user/:id',
+   name: 'user',
+   component: OrderDetail
+}
+```
+
+`:id`为路径里的参数。传递参数:
+
+```js
+this.$router.push({ path: `/user/${id}` })
+```
+
+
+
+##### router.push添加params参数
+
+**路由配置:**
+
+```js
+{
+  path: '/user',
+  name: '/user',
+  component: orderDetail
+}
+```
+
+**传递参数:**
+
+```js
+this.$router.push({
+  name: 'user',
+  params: {
+     id: id
+  }
+})
+```
+
+**这里需要注意的是：这种方式传递参数，push的对象只能是命名的路由。如果push的配置对象使用path，那么params参数会被忽略。**
+
+
+
+**获取参数:**
+
+不管是在路由配置params参数还是通过router.push()编程式传递参数，这些参数都是可以通过params来获取
+
+```js
+this.$router.params.id
+```
+
+
+
+
+
+**查询参数:**
+
+查询参数类似于在路径下添加查询字符串:
+
+```js
+/user?id=123
+```
+
+
+
+传递参数
+
+```js
+this.$router.push({
+  path: '/user',
+  query: {
+    id: id
+  }
+})
+```
+
+获取参数
+
+使用查询参数传递参数，需要使用`router.query`来获取参数
+
+```js
+$router.query.id
+```
+
+
+
+
+
+### Vue中this.$set的用法
+
+* 功能介绍
+
+> this.$set实现的功能：当你发现你给对象加了一个属性，在控制台能打印出来，但是却没有更新到视图上时，也许这个时候就需要用到this.$set()这个方法了，
+>
+> 简单来说this.$set()的功能就是解决这个问题的
+
+> 官方解释: 向响应式对象中添加一个属性，并确保这个新属性同样是响应式的，且触发视图更新。它必须用于向响应式对象上添加新属性，因为Vue无法探测普通的新增属性(比如：this.myObject.newProperty = 'hi'),你会发现vue官网是vue.set
+>
+
+
+
+* 使用
+
+  1.vue 中写在<template></template>标签的代码
+
+  <img src="https://upload-images.jianshu.io/upload_images/17600821-0f9b3a07bcb428aa.png?imageMogr2/auto-orient/strip|imageView2/2/w/959/format/webp" alt="img" style="zoom:80%;" />
+
+  2.export default{}中data数据
+
+  
+
+  ![img](https:////upload-images.jianshu.io/upload_images/17600821-58c6009e63e66fa4.png?imageMogr2/auto-orient/strip|imageView2/2/w/559/format/webp)
+
+  3.点击按钮触发changeValue方法，
+
+  🌹 调用方法：this.$set( target, key, value )
+
+  🌹 target：要更改的数据源(可以是对象或者数组)
+
+  🌹 key：要更改的具体数据
+
+  🌹 value ：重新赋的值
+
+  ![img](https:////upload-images.jianshu.io/upload_images/17600821-0ab6b6711bdbf0e7.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp)
+
+  4.在没有点击按钮的时候，界面是这样的，虽然界面没有显示出来，但是控制台已经打印出来了
+
+  
+
+  ![img](https:////upload-images.jianshu.io/upload_images/17600821-c27e6a5087dc3df9.png?imageMogr2/auto-orient/strip|imageView2/2/w/179/format/webp)
+
+  ![img](https:////upload-images.jianshu.io/upload_images/17600821-9c3152d34499caf9.png?imageMogr2/auto-orient/strip|imageView2/2/w/326/format/webp)
+
+  5.当点击按钮的时候，调用this.$set方法，成功显示第三个属性,这就是整个过程啦😁
+
+  
+
+  ![img](https:////upload-images.jianshu.io/upload_images/17600821-5c35c8fafe065de8.png?imageMogr2/auto-orient/strip|imageView2/2/w/179/format/webp)
+
+  #### **3.应用场景** 
+
+  当你需要为对象添加一个新属性时，或者你遇到我上边所说的问题的时候可以试试这个方法，具体vue.set和this.$set()的原理和区别，可以参考这个[vue.set和this.$set()的区别](https://links.jianshu.com/go?to=https%3A%2F%2Fwww.jb51.net%2Farticle%2F146580.htm)，仔细看看如果暂时不懂也没关系，先解决问题，会用这个方法。
+
+  
+
+  
+
+## 封装组件
+
+* 在公共组件里创建文件
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220120153538471.png" alt="image-20220120153538471" style="zoom:67%;" />
+
+
+
+* `index`里写想要封装的组件
+* 使用`v-for`遍历你要的数据或者啥的东西
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220120153708998.png" alt="image-20220120153708998" style="zoom:67%;" />
+
+
+
+* 封装的组件里使用`props`接收参数
+
+  <img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220120153938260.png" alt="image-20220120153938260" style="zoom:67%;" />
+
+
+
+
+
+* 使用封装好的组件
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220120154408407.png" alt="image-20220120154408407" style="zoom:67%;" />
+
+
+
+* 存储数据的地方
+
+  <img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220120154720706.png" alt="image-20220120154720706" style="zoom:67%;" />
+
+
+
+
+
+## 组件使用插槽
+
+样式:
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220121155257307.png" alt="image-20220121155257307" style="zoom:67%;" />
+
+使用插槽:
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220121155137308.png" alt="image-20220121155137308" style="zoom:67%;" />
+
+
+
+
+
+
+
+## 使用混合封装echarts
+
+* 在`main.js`里设置全局调用
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220124093801317.png" alt="image-20220124093801317" style="zoom:67%;" />
+
+
+
+
+
+* 在工具类`utils`定义`echarts`模块
+
+```js
+// 引入 echarts 核心模块，核心模块提供了 echarts 使用必须要的接口。
+import * as echarts from 'echarts/core'
+// 引入各种图表，图表后缀都为 Chart
+import { BarChart, PieChart, LineChart,
+  RadarChart, PictorialBarChart, FunnelChart,
+  CustomChart
+} from 'echarts/charts' // 这里我引用两个类型的图表
+// 引入提示框，标题，直角坐标系等组件，组件后缀都为 Component
+import {
+  TitleComponent,
+  TooltipComponent,
+  GridComponent,
+  LegendComponent,
+  // GeoCoComponent,
+  DataZoomComponent
+} from 'echarts/components'
+// 引入 Canvas 渲染器，注意引入 CanvasRenderer 或者 SVGRenderer 是必须的一步
+import { CanvasRenderer } from 'echarts/renderers'
+
+// 注册必须的组件
+echarts.use([
+  TitleComponent,
+  TooltipComponent,
+  GridComponent,
+  LegendComponent,
+  DataZoomComponent,
+  FunnelChart,
+  BarChart,
+  PieChart,
+  LineChart,
+  CanvasRenderer,
+  RadarChart,
+  PictorialBarChart,
+  CustomChart
+])
+export default echarts
+
+```
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220124094626877.png" alt="image-20220124094626877" style="zoom:67%;" />
+
+
+
+* 在组件中使用`echarts`混入，把echarts的代码放进`mixins/echartMixin.js`里
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220124102839443.png" alt="image-20220124102839443" style="zoom:67%;" />
+
+
+
+* 栗子:(`mixins/echartsMixin.js`)
+
+```js
+export default {
+  data() {
+    return {
+    }
+  },
+  methods: {
+    setEchart1Options(list = []) {
+      // 横坐标轴
+      const options = {
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          }
+        },
+        legend: {
+          x: 'right',
+          textStyle: {
+            width: 49,
+            height: 17,
+            fontsize: 12,
+            fontweight: 400,
+            lineheight: 14,
+            color: '#FFFFFF',
+            opacity: 0.8
+          },
+          padding: [17, 25, 0, 0], // 可设定图例[距上方距离，距右方距离，距下方距离，距左方距离]
+          data: ['检查产品数', '不合格数']
+        },
+        grid: {
+          x: 50,
+          y: 59,
+          x2: 26,
+          y2: 45,
+          borderWidth: 5
+        },
+        xAxis: [
+          {
+            type: 'category',
+            data: ['21-04', '21-05', '21-06', '21-07', '21-08', '21-09'],
+            axisTick: {
+              alignWithLabel: true
+            },
+            axisLabel: {
+              inside: false,
+              textStyle: {
+                color: '#fff',
+                fontSize: '12'
+              }
+            }
+          }
+        ],
+        yAxis: [
+          {
+            type: 'value',
+            max: 300,
+            min: 0,
+            splitNumber: 3,
+            axisLabel: {
+              inside: false,
+              textStyle: {
+                color: '#fff',
+                fontSize: '12'
+              }
+            }
+          }
+        ],
+        series: [
+          {
+            name: '检查产品数',
+            type: 'bar',
+            barWidth: '10%',
+            data: [250, 150, 80, 180, 220, 200],
+            itemStyle: {
+              normal: {
+                // 颜色渐变函数 前四个参数分别表示四个位置依次为左、下、右、上
+                color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                  offset: 0,
+                  color: '#00D5FF'
+                }, {
+                  offset: 1,
+                  color: '#179ABE'
+                }]),
+                opacity: 1,
+                barBorderRadius: 1
+              }
+            }
+          },
+          {
+            name: '不合格数',
+            type: 'bar',
+            barWidth: '10%',
+            data: [110, 80, 40, 70, 120, 50],
+            itemStyle: {
+              normal: {
+                // 颜色渐变函数 前四个参数分别表示四个位置依次为左、下、右、上
+                color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                  offset: 0,
+                  color: '#FF4242'
+                }, {
+                  offset: 1,
+                  color: '#DB0E0E'
+                }]),
+                opacity: 1,
+                barBorderRadius: 1
+              }
+            }
+          }
+        ]
+      }
+      this.echart1.setOption(options, true)
+    },
+    initEchart1(data) {
+      this.echart1 = this.$echarts.init(this.$refs.echart1Ele)
+      this.setEchart1Options(data)
+    }
+  }
+}
+
+```
+
+
+
+* `minins/echartMixin.js`的基本格式
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220124095906740.png" alt="image-20220124095906740" style="zoom:67%;" />
+
+
+
+
+
+## mixins混入使用
+
+前言:当我们的项目越来越大，我们会发现组件之间可能存在很多相似的功能，你在一遍又一遍的复制粘贴相同的代码段（data，method，watch、mounted等），如果我们在每个组件中去重复定义这些属性和方法会使得项目出现代码冗余并提高了维护难度，针对这种情况官方提供了Mixins特性
+
+[参考资料](https://juejin.cn/post/6858174634019192845)
+
+### mixins介绍
+
+* mixins(混入)[官方](https://link.juejin.cntarget=https%3A%2F%2Fcn.vuejs.org%2Fv2%2Fguide%2Fmixins.html)的描述是一种分发 Vue 组件中可复用功能的非常灵活的方式，mixins是一个js对象，它可以包含我们组件中script项中的任意功能选项，如data、components、methods 、created、computed等等。我们只要将共用的功能以对象的方式传入 mixins选项中，当组件使用 mixins对象时所有mixins对象的选项都将被混入该组件本身的选项中来，这样就可以提高代码的重用性，使你的代码保持干净和易于维护。
+
+
+
+### 创建mixins
+
+* 在src目录下创建一个mixins文件夹，文件夹下新建一个myMixins.js文件。前面我们说了mixins是一个js对象，所以应该以对象的形式来定义myMixins，在对象中我们可以和vue组件一样来定义我们的data、components、methods 、created、computed等属性，并通过export导出该对象
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220124113529680.png" alt="image-20220124113529680"  />
+
+
+
+### 使用mixins
+
+* 在需要调用的组件中引入`myMixins.js`文件，然后`export default`中引入你需要的对象即可
+
+
+
+### mixins的特点
+
+* 方法和参数在各组件中不共享，虽然组件调用了mixins并将其属性合并到自身组件中来了，但是其属性只会被当前组件所识别并不会被共享，也就是其他组件无法从当前组件中获取到mixins中的数据和方法。
+* 引入mixins后组件会对其进行合并，将mixins中的数据和方法拓展到当前组件中来，在合并的过程中会出现冲突，接下来我们详细了解Mixins合并冲突
+
+
+
+### mixins合并冲突
+
+值为对象(components、methods 、computed、data)的选项，混入组件时选项会被合并，键冲突时优先组件，组件中的键会覆盖混入对象的
+
+①我们在混入对象增加age属性、getAge1方法和getAge2方法
+
+```js
+// myMixins.js
+export const myMixins = {
+  components:{},
+  data() {
+    return {
+      age: 18,
+    }
+  },
+  methods: {
+    getAge1() {
+      console.log("age1 from mixins =", this.age )
+    },
+    getAge2() {
+      console.log("age2 from mixins =", this.age )
+    },
+  }
+}
+```
+
+
+
+
+
+②我们在引入了myMixins文件的组件中，增加age属性、getAge1方法和getAge3方法
+
+```js
+// template.vue
+import { myMixins } from "@/mixins/myMixins.js";
+export default {
+  mixins: [myMixins],
+  data() {
+    return {
+      age: 20,
+    }
+  },
+  mounted() {
+    this.getAge1();
+    this.getAge2();
+    this.getAge3();
+  },
+  methods: {
+    getAge1() {
+      console.log('age1 from template =', this.age)
+    },
+    getAge3() {
+      console.log('age3 from template =', this.age)
+    },
+  }
+}
+```
+
+
+
+③我们会发现，组件中的age覆盖了混合对象的age，组件的getAge1方法覆盖了混合对象的getAge1方法
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220124113319684.png" alt="image-20220124113319684" style="zoom: 80%;" />
+
+【6.2】值为函数(created、mounted)的选项，混入组件时选项会被合并调用，混合对象里的钩子函数在组件里的钩子函数之前调用
+
+```js
+// myMixins.js
+export const myMixins = {
+  components:{},
+  data() {
+    return {}
+  },
+  created() {
+    console.log('xxx from mixins')
+  }
+}
+```
+
+
+
+```js
+import { myMixins } from "@/mixins/myMixins.js";
+export default {
+  mixins: [myMixins],
+  data() {
+    return {}
+  },
+  created() {
+    console.log('xxx from template')
+  }
+}
+```
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220124113343112.png" alt="image-20220124113343112" style="zoom:80%;" />
+
+### 与vuex的区别
+
+> vuex：用来做状态管理的，里面定义的变量在每个组件中均可以使用和修改，在任一组件中修改此变量的值之后，其他组件中此变量的值也会随之修改。
+>
+> Mixins：可以定义共用的变量，在每个组件中使用，引入组件中之后，各个变量是相互独立的，值的修改在组件中不会相互影响。
+
+
+
+### 与公共组件的区别
+
+> 组件：在父组件中引入组件，相当于在父组件中给出一片独立的空间供子组件使用，然后根据props来传值，但本质上两者是相对独立的。
+>
+> Mixins：则是在引入组件之后与组件中的对象和方法进行合并，相当于扩展了父组件的对象与方法，可以理解为形成了一个新的组件。
+
+
+
+
+### 在项目中的使用
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220124111701539.png" alt="image-20220124111701539" style="zoom:67%;" />
+
+
+
+
+
+
+
+## 利用js修改对象数组里的对象属性名
+
+> 有些时候，我们前端从后端拿过来的JSON对象数据，某些字段并不是前端想要的，需要对一些字段名进行重命名。一般修改对象数组的对象属性名，最简便的就是通过遍历对象数组的方法进行修改，但是用这个方法，如果处理的数据量很大，它的执行效率是非常低的。下面介绍一个更高效的方法，即通过正则的方法进行过滤修改。
+
+```js
+JSON.parse(JSON.stringify(data).replace(/name/g, 'new_name'))    //data为数组，name为修改前，new_name为修改后
+```
+
+
+
+解释：1）JSON.stringify()把json对象转成json字符串；
+
+          2）使用正则的replace()方法替换属性名；
+    
+          3）JSON.parse()把json字符串又转成json对象。
+
+修改多个属性：当要修改多个属性名时，多次调用replace方法，可以链式调用。如下面说明
+
+```js
+JSON.parse(JSON.stringify(data).replace(/name1/g, 'new_name1').replace(/name2/g, 'new_name2').replace(/name3/g, 'new_name3')...)   
+```
+
+
+
+* 注意：如果对象出现和属性名相同的值，这种方法就没用了； 最好还是通过拷贝出来一个新对象，这样还能避免很多问题的发生：
+*  data.map(v=>{return {name: v.title}})
+
+
+
+
+
+##  勾选选择框，把id通过数组的方式保存传值
+
+* 定义一个数组：
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20223609334.png" alt="image-20223609334" style="zoom:67%;" />
+
+* 使用的勾选的方法：
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220303133721150.png" alt="image-20220303133721150" style="zoom:67%;" />
+
+* 最后使用即可：
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220211113812898.png" alt="image-20220211113812898" style="zoom:67%;" />
+
+
+
+* 数组格式
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220211113957869.png" alt="image-20220211113957869" style="zoom: 80%;" />
+
+
+
+
+
+
+
+
+
+## Js实现扁平化数据结构和tree转换
+
+### tree扁平化
+
+#### 1、递归实现
+
+> 遍历`tree`，每一项加进结果集，如果有`children`且长度不为0，则递归遍历
+>
+> 这里需要用解构赋值将每个节点的`children`属性去除
+
+```js
+<script>
+    let tree = [
+    {
+      "id": 1,
+      "name": "1",
+      "pid": 0,
+      "children": [
+        {
+          "id": 2,
+          "name": "2",
+          "pid": 1,
+          "children": []
+        },
+        {
+          "id": 3,
+          "name": "3",
+          "pid": 1,
+          "children": [
+            {
+              "id": 4,
+              "name": "4",
+              "pid": 3,
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+
+    function treeToArray(tree) {
+      let res = []
+      for (const item of tree) {
+        const { children, ...i } = item 
+        if(children && children.length) {
+          res = res.concat(treeToArray(children))
+        }
+        res.push(i)
+      }
+      return res
+    }
+    treeToArray(tree)
+    console.log('原始树:',tree);
+    console.log('树转数组:',treeToArray(tree))
+  </script>
+```
+
+原始树：
+
+![image-20220213192728974](https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220213192728974.png)
+
+
+
+扁平化树后：
+
+![image-20220213192810057](https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220213192810057.png)
+
+
+
+#### 2、reduce实现
+
+> 思路同递归实现，比较简洁
+
+```js
+// 2、reduce
+    function treeToArray(tree) {
+      return tree.reduce((res, item) => {
+        const { children, ...i } = item 
+        return res.concat(i, children && children.length ? treeToArray(children) : [])
+      }, [])
+    }
+
+
+    treeToArray(tree)
+    console.log('原始树:',tree);
+    console.log('树转数组:',treeToArray(tree))
+```
+
+![image-20220213193610255](https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220213193610255.png)
+
+
+
+
+
+## hosts
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220224173823695.png" alt="image-20220224173823695" style="zoom:80%;" />
+
+
+
+
+
+
+
+
+
+## Vuex
+
+> Vuex 的思想是 当我们在页面上点击一个按钮，它会触发(dispatch)一个action, action 随后会执行(commit)一个mutation, mutation 立即会改变state,  state 改变以后,我们的页面会state 获取数据，页面发生了变化。 Store 对象，包含了我们谈到的所有内容，action, state, mutation，所以是核心了。
+>
+
+> store 对象注入到根实例后，在所有的子组件中，就可以用this.$store 来指向store 对象，获取state。在子组件中，computed 属性是根据它的依赖自动更新的。所以只要store中的state发生变化，它就会自动变化。
+
+> 通过computed属性可以获取到状态值，但是组件中每一个属性(如：count)都是函数,如果有10个，那么就要写10个函数，且重复写10遍return this.$store.state，不是很方便。vue 提供了 mapState 函数，它把state 直接映射到我们的组件中。
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220303095611815.png" alt="image-20220303095611815" style="zoom: 67%;" />
+
+
+
+
+
+### vuex存储复杂参数（如对象数组等）刷新数据丢失问题
+
+[使用Vuex 保存 Javascript对象、数组](https://blog.csdn.net/qq_40994260/article/details/108187096)
+
+> vuex 保存 Javascript对象、数组大致分为以下几个步骤:
+>
+> 1、封装 Storage 对象
+> 2、在 Vuex 的 store 、getters 和 mutations 中编写保存方法
+> 3、利用 JSON.stringify() 方法封装 Javascript 对象、数组为JSON类型
+> 4、利用 Vuex 的 getters 方法获取 Vuex 中保存的值，通过 JSON.prase() 解析封装的JSON值，从而访问 Vuex 保存的对象
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220303100813722.png" alt="image-20220303100813722" style="zoom: 67%;" />
+
+
+
+		封装 Storage 对象
+
+
+
+
+例子：
+
+* 把数据存储到vuex里
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220303101500543.png" alt="image-20220303101500543" style="zoom: 67%;" />
+
+
+
+* vuex+localStorage结合的方法在mutations中
+
+```js
+const mutations = {
+  REPORT_DETAILS: (state, reportDetails) => {
+    state.reportDetails = reportDetails
+    localStorage.setItem('reportDetails', JSON.stringify(reportDetails))
+  }
+}
+```
+
+
+
+* gettters
+
+```js
+const getters = {
+  reportDetails: state => state.reportDetails.reportDetails
+}
+export default getters
+
+```
+
+
+
+* actions
+
+```js
+const actions = {
+  getReportDetails({ commit }, reportDetails) {
+    return new Promise(resolve => {
+      commit('REPORT_DETAILS', reportDetails)
+    })
+  }
+}
+```
+
+
+
+最终：
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220303101352852.png" alt="image-20220303101352852" style="zoom:80%;" />
+
+
+
+* localStorage
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220303101625347.png" alt="image-20220303101625347" style="zoom:80%;" />
+
+
+
+* 如果不想存储在localStorage中，可只放在vuex
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220303105706886.png" alt="image-20220303105706886" style="zoom:67%;" />
+
+
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220303105805189.png" alt="image-20220303105805189" style="zoom:67%;" />
+
+
+
+
+
+> 同步提交mutation用 this.$store.commit("mutation中的type名")
+>
+> 异步提交mutation用 context.commit("mutation中的type名"，参数)
+>
+> 异步分发action用 this.$store.dispatch("action中的type名")
+
+
+
+
+
+
+
+
+
+# element-ui
+
+
+
+## 优雅使用element-ui中的table组件
+
+[[(5条消息) 优雅的使用 element-ui 中的 table 组件_weixin_34392906的博客-CSDN博客](https://blog.csdn.net/weixin_34392906/article/details/88011315)]()
+
+
+
+## element-ui中 el-input等组件绑定点击事件
+
+* vue 使用elememt-ui的input组件时，添加:
+
+```vue
+<el-input @click='inputClick'>
+```
+
+绑定事件无效
+
+
+
+解决方法:
+
+* 使用v-on的修饰符 .native
+
+```vue
+<el-input @click.native='inputClick'>
+```
+
+
+
+
+
+## el-radio动态获取数据， 默认选中第一个
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220330095308191.png" alt="image-20220330095308191" style="zoom: 80%;" />
+
+
+
+
+
+## 使用elementUi如何在输入框边输入边校验
+
+* 输入框有个需求，“长度在3-20之间”，想要用户边输入边校验，而不是等输入完了点击提交的时候再校验
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220408105322514.png" alt="image-20220408105322514" style="zoom:80%;" />
+
+
+
+* 解决方案：
+* 输入框添加input事件：
+
+![image-20220408105536283](https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220408105536283.png)
+
+* 再手动触发校验规则
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220408105644042.png" alt="image-20220408105644042" style="zoom: 67%;" />
+
+* 校验规则根据自己需求添加即可
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220408105728945.png" alt="image-20220408105728945" style="zoom:67%;" />
+
+<img src="https://gitee.com/HuangGanGan_www/my_picture_bed/raw/master/img/companyWork/image-20220408105826063.png" alt="image-20220408105826063" style="zoom:50%;" />
+
+题外：
+
+* 必须包含四种的组合密码的校验规则
+
+```js
+ var passwordreg = /(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{8,12}/
+     var isValid = passwordreg.test(this.user.newPassword);
+     if(isValid != true){
+        this.msgError("密码必须是大写字母，小写字母，数字，特殊字符组成，且长度为8到12位！");
+     return;
+  }
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
