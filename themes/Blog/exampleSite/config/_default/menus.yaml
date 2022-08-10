@@ -1,0 +1,34 @@
+main:
+  - name: 技术杂文
+    url: /posts/
+    weight: 1
+  - name: 笔记速记
+    url: /docs/note
+    weight: 2
+  - name: Istio 详解
+    url: /docs/istio
+    weight: 3
+  - name: Envoy 详解
+    url: /docs/envoy
+    weight: 4
+  - name: WASM 详解
+    url: /docs/wasm
+    weight: 4
+  - name: Golang 详解
+    url: /docs/go
+    weight: 4
+  - name: Kiali 详解
+    url: /docs/kiali
+    weight: 5
+  - name: K8S 详解
+    url: /docs/k8s
+    weight: 4
+  - name: Prometheus 详解
+    url: /docs/prom
+    weight: 7
+  - name: Tracing 详解
+    url: /docs/tracing
+    weight: 7
+  - name: CI/CD 详解
+    url: /docs/cicd
+    weight: 8
