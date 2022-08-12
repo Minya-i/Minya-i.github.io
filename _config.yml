@@ -98,7 +98,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: butterfly
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
@@ -107,4 +107,4 @@ theme: next
 deploy:
   type: git
   repo: git@github.com:Minya-i/Minya-i.github.io.git
-  branch: master
+  branch: main
